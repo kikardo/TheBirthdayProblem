@@ -74,9 +74,39 @@ public class Logic
      * <p>
      * We provide you this method that way we can test it with unit testing.
      */
-    public double calculate(int size, int count) {
-        // TODO -- add your code here
+    public double calculate(int size, int count) { // size off the gorup of people, count number of
+        // simulations to run,  The method
+        //returns a value of type double that represents the percent of the simulations that had two people with the same
+        //birthday. If/when you add helper methods, be sure to place them in the Logic class
+        int sum =0;
+        for(int c=0; c<count;c++){
 
+            Random rand = new Random();
+            int[] arrBirthday = new int[size];
+
+            for (int i=0; i<size;i++){
+                int n = rand.nextInt (364); // generates birthday
+                arrBirthday[i] = n; // places birthday in array
+            }
+
+            int matchDate=0;
+            int k=0;
+
+            while(matchDate == 0){
+                for (int j=0;j<arrBirthday.length;j++){
+                    if(arrBirthday[k] == arrBirthday[j]) {
+                        matchDate++;
+                    }
+                }
+                k++;
+            }
+
+            if(matchDate == 2){
+                sum ++;
+            }
+        }
+        double result = count/sum;
+        return result;
     }
-    // TODO - add your code here
+
 }
