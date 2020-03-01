@@ -79,34 +79,33 @@ public class Logic
         //returns a value of type double that represents the percent of the simulations that had two people with the same
         //birthday. If/when you add helper methods, be sure to place them in the Logic class
         int sum =0;
-        for(int c=0; c<count;c++){
+        for(int c=0; c<count;c++) {
 
-            Random rand = new Random();
+            Random rand = new Random ();
             int[] arrBirthday = new int[size];
 
-            for (int i=0; i<size;i++){
+            for (int i = 0; i < size; i++) {
                 int n = rand.nextInt (364); // generates birthday
                 arrBirthday[i] = n; // places birthday in array
             }
 
-            int matchDate=0;
-            int k=0;
+            int matchDate = 0;
 
-            while(matchDate == 0){
-                for (int j=0;j<arrBirthday.length;j++){
-                    if(arrBirthday[k] == arrBirthday[j]) {
+            for (int k = 0; k < arrBirthday.length; k++) {
+                for (int j = k + 1; j < arrBirthday.length; j++) {
+                    if (arrBirthday[k] == arrBirthday[j]) {
                         matchDate++;
                     }
                 }
-                k++;
             }
-
-            if(matchDate == 2){
+            if (matchDate != 0) {
                 sum ++;
             }
         }
-        double result = count/sum;
-        return result;
+            final double result = (double) 100.00 * sum / count;
+            return result;
+        }
+
     }
 
-}
+
